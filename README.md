@@ -5,7 +5,7 @@ Home: https://github.com/gflags/gflags
 
 Package license: BSD
 
-Feedstock license: BSD
+Feedstock license: BSD 3-Clause
 
 Summary: A C++ library that implements commandline flags processing.
 
@@ -72,6 +72,11 @@ Current build status
 Linux: [![Circle CI](https://circleci.com/gh/conda-forge/gflags-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/gflags-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/gflags-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/gflags-feedstock) 
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/gflags-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/gflags-feedstock/branch/master)
+
+Current release info
+====================
+Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gflags/badges/version.svg)](https://anaconda.org/conda-forge/gflags)
+Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gflags/badges/downloads.svg)](https://anaconda.org/conda-forge/gflags)
 
 
 Updating gflags-feedstock
