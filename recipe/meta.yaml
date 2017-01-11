@@ -1,4 +1,4 @@
-{% set version = "2.1.2" %}
+{% set version = "2.2.0" %}
 
 package:
   name: gflags
@@ -7,15 +7,20 @@ package:
 source:
   fn: v{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
-  sha1: 8bdbade9d041339dc14b4ab426e2354a5af38478
+  sha1: bf07a7926cb2ce4dd4048bdc081f9e00e91cefd6
 
 build:
   number: 0
-  skip: true  # [win]
+  features:
+    - vc9  # [win and py27]
+    - vc10 # [win and py34]
+    - vc14 # [win and py35]
+
 
 requirements:
   build:
     - cmake
+    - python # [win]
 
 test:
   commands:
@@ -23,6 +28,10 @@ test:
     - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.dylib)  # [osx]
     - exit $(test -f ${PREFIX}/lib/libgflags.so)               # [linux]
     - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.so)     # [linux]
+    # For some reason testing for the existence of the dll fails the build with:
+    #   The following specifications were found to be in conflict:
+    #   - gflags 2.2.0 vc14_0 -> feature:vc14
+    # - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1   # [win]
 
 about:
   home: https://github.com/gflags/gflags
