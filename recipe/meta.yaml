@@ -11,6 +11,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [win and py==36]
   features:
     - vc9   # [win and py27]
     - vc10  # [win and py34]
@@ -23,15 +24,16 @@ requirements:
     - python  # [win]
 
 test:
+  requires:
+    - python 2.7.*  # [win and py27]
+    - python 3.4.*  # [win and py34]
+    - python 3.5.*  # [win and py35]
   commands:
     - exit $(test -f ${PREFIX}/lib/libgflags.dylib)            # [osx]
     - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.dylib)  # [osx]
     - exit $(test -f ${PREFIX}/lib/libgflags.so)               # [linux]
-    - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.so)     # [linux]
-    # For some reason testing for the existence of the dll fails the build with:
-    #   The following specifications were found to be in conflict:
-    #   - gflags 2.2.0 vc14_0 -> feature:vc14
-    # - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1   # [win]
+    - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.so)     # [linux]    
+    - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1   # [win]
 
 about:
   home: https://github.com/gflags/gflags
