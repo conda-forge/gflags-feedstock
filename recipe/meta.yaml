@@ -11,7 +11,10 @@ source:
 
 build:
   number: 0
-  skip: true  # [win and py==36]
+  # skipping
+  # py27 (vc9) and py34 (vc10) since vc does not have stdint.h
+  # py36 since it uses vc14 like py35
+  skip: true  # [win and py!=35]
   features:
     - vc9   # [win and py27]
     - vc10  # [win and py34]
