@@ -27,6 +27,7 @@ test:
 about:
   home: https://github.com/gflags/gflags
   license: BSD 3-Clause
+  license_file: COPYING.txt
   summary: A C++ library that implements commandline flags processing.
 
 extra:
