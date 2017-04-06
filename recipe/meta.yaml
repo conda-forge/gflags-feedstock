@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  fn: v{{ version }}.tar.gz
+  fn: gflags-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
   sha1: 8bdbade9d041339dc14b4ab426e2354a5af38478
 
