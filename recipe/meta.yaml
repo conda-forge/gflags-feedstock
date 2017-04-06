@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  fn: v{{ version }}.tar.gz
+  fn: gflags-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
   sha1: bf07a7926cb2ce4dd4048bdc081f9e00e91cefd6
 
@@ -24,6 +24,7 @@ build:
 
 requirements:
   build:
+    - toolchain
     - cmake
     - python  # [win]
     - msinttypes  # [win and py<35]
@@ -42,7 +43,8 @@ test:
 
 about:
   home: https://github.com/gflags/gflags
-  license: BSD
+  license: BSD 3-Clause
+  license_file: COPYING.txt
   summary: A C++ library that implements commandline flags processing.
 
 extra:
