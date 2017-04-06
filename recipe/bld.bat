@@ -14,13 +14,4 @@ cmake -G"%CMAKE_GENERATOR%" ^
 
 cmake --build . --target install --config %CMAKE_CONFIG%
 
-:: move the gflags dll to bin
-move "%LIBRARY_LIB%\gflags.dll" "%LIBRARY_BIN%\gflags.dll"
-
-:: patch the cmake file accordingly
-"%PYTHON%" "%RECIPE_DIR%\patch_cmake_targets.py" ^
-           "%LIBRARY_PREFIX%\CMake\gflags-targets-release.cmake" ^
-           "${_IMPORT_PREFIX}/Lib/gflags.dll" ^
-           "${_IMPORT_PREFIX}/bin/gflags.dll"
-
 popd
