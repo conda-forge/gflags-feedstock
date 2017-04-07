@@ -1,14 +1,29 @@
-diff --git CMakeLists.txt CMakeLists.txt
-index 3fd9d70..9ce3f67 100644
---- CMakeLists.txt
-+++ CMakeLists.txt
-@@ -398,7 +399,8 @@ endif ()
- # installation directories
- if (OS_WINDOWS)
-   set (RUNTIME_INSTALL_DIR Bin)
--  set (LIBRARY_INSTALL_DIR Lib)
-+  set (LIBRARY_INSTALL_DIR Bin)
-+  set (ARCHIVE_INSTALL_DIR Lib)
-   set (INCLUDE_INSTALL_DIR Include)
-   set (CONFIG_INSTALL_DIR  CMake)
-   set (PKGCONFIG_INSTALL_DIR)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3fd9d70..e289b43 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -501,14 +501,22 @@ configure_file (cmake/version.cmake.in "${PROJECT_BINARY_DIR}/${PACKAGE_NAME}-co
+ if (BUILD_SHARED_LIBS AND INSTALL_SHARED_LIBS)
+   foreach (opts IN ITEMS "" _nothreads)
+     if (BUILD_gflags${opts}_LIB)
+-      install (TARGETS gflags${opts}_shared DESTINATION ${LIBRARY_INSTALL_DIR} EXPORT ${EXPORT_NAME})
++      install (TARGETS gflags${opts}_shared
++               EXPORT ${EXPORT_NAME}
++               RUNTIME DESTINATION ${RUNTIME_INSTALL_DIR}
++               LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR}
++               ARCHIVE DESTINATION ${LIBRARY_INSTALL_DIR})
+     endif ()
+   endforeach ()
+ endif ()
+ if (BUILD_STATIC_LIBS AND INSTALL_STATIC_LIBS)
+   foreach (opts IN ITEMS "" _nothreads)
+     if (BUILD_gflags${opts}_LIB)
+-      install (TARGETS gflags${opts}_static DESTINATION ${LIBRARY_INSTALL_DIR} EXPORT ${EXPORT_NAME})
++      install (TARGETS gflags${opts}_static
++               EXPORT ${EXPORT_NAME}
++               RUNTIME DESTINATION ${RUNTIME_INSTALL_DIR}
++               LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR}
++               ARCHIVE DESTINATION ${LIBRARY_INSTALL_DIR})
+     endif ()
+   endforeach ()
+ endif ()
