@@ -2,12 +2,13 @@ diff --git CMakeLists.txt CMakeLists.txt
 index 3fd9d70..9ce3f67 100644
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -398,7 +398,7 @@ endif ()
+@@ -398,7 +399,8 @@ endif ()
  # installation directories
  if (OS_WINDOWS)
    set (RUNTIME_INSTALL_DIR Bin)
 -  set (LIBRARY_INSTALL_DIR Lib)
 +  set (LIBRARY_INSTALL_DIR Bin)
++  set (ARCHIVE_INSTALL_DIR Lib)
    set (INCLUDE_INSTALL_DIR Include)
    set (CONFIG_INSTALL_DIR  CMake)
    set (PKGCONFIG_INSTALL_DIR)
