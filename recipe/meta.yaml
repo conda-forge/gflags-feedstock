@@ -1,4 +1,4 @@
-{% set version = "2.1.2" %}
+{% set version = "2.2.0" %}
 
 package:
   name: gflags
@@ -7,23 +7,40 @@ package:
 source:
   fn: gflags-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
-  sha1: 8bdbade9d041339dc14b4ab426e2354a5af38478
+  sha1: bf07a7926cb2ce4dd4048bdc081f9e00e91cefd6
+
+  patches:
+    - windows_cmake_install_bindir.patch       # [win]
 
 build:
-  number: 1
-  skip: true  # [win]
+  number: 0
+  # py36 since it uses vc14 like py35
+  skip: true  # [win and py36]
+  features:
+    - vc9   # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py35]
+
 
 requirements:
   build:
     - toolchain
     - cmake
+    - python  # [win]
+    - msinttypes  # [win and py<35]
 
 test:
+  requires:
+    - python 2.7.*  # [win and py27]
+    - python 3.4.*  # [win and py34]
+    - python 3.5.*  # [win and py35]
   commands:
     - exit $(test -f ${PREFIX}/lib/libgflags.dylib)            # [osx]
     - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.dylib)  # [osx]
     - exit $(test -f ${PREFIX}/lib/libgflags.so)               # [linux]
     - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.so)     # [linux]
+    - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1   # [win]
+    - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1   # [win]
 
 about:
   home: https://github.com/gflags/gflags
@@ -34,3 +51,4 @@ about:
 extra:
   recipe-maintainers:
     - jakirkham
+    - wesm
