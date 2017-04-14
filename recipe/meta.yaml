@@ -35,10 +35,10 @@ test:
     - python 3.4.*  # [win and py34]
     - python 3.5.*  # [win and py35]
   commands:
-    - exit $(test -f ${PREFIX}/lib/libgflags.dylib)            # [osx]
-    - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.dylib)  # [osx]
-    - exit $(test -f ${PREFIX}/lib/libgflags.so)               # [linux]
-    - exit $(test -f ${PREFIX}/lib/libgflags_nothreads.so)     # [linux]
+    - test -f ${PREFIX}/lib/libgflags.dylib                    # [osx]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib          # [osx]
+    - test -f ${PREFIX}/lib/libgflags.so                       # [linux]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.so             # [linux]
     - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1   # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1   # [win]
 
