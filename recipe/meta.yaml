@@ -13,7 +13,7 @@ source:
     - windows_cmake_install_bindir.patch       # [win]
 
 build:
-  number: 0
+  number: 1
   # py36 since it uses vc14 like py35
   skip: true  # [win and py36]
   features:
@@ -35,12 +35,15 @@ test:
     - python 3.4.*  # [win and py34]
     - python 3.5.*  # [win and py35]
   commands:
-    - test -f ${PREFIX}/lib/libgflags.dylib                    # [osx]
-    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib          # [osx]
-    - test -f ${PREFIX}/lib/libgflags.so                       # [linux]
-    - test -f ${PREFIX}/lib/libgflags_nothreads.so             # [linux]
-    - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1   # [win]
-    - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1   # [win]
+    - test -f ${PREFIX}/lib/libgflags.dylib                           # [osx]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]
+    - test -f ${PREFIX}/lib/libgflags.so                              # [linux]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.so                    # [linux]
+    - test -f ${PREFIX}/lib/libgflags.a                               # [not win]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.a                     # [not win]
+    - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1          # [win]
+    - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1          # [win]
+    - if not exist %PREFIX%\\Library\\lib\\gflags_static.lib exit 1   # [win]
 
 about:
   home: https://github.com/gflags/gflags
