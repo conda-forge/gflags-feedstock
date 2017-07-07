@@ -13,7 +13,7 @@ source:
     - windows_cmake_install_bindir.patch       # [win]
 
 build:
-  number: 1
+  number: 2
   # py36 since it uses vc14 like py35
   skip: true  # [win and py36]
   features:
@@ -39,6 +39,8 @@ test:
     - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]
     - test -f ${PREFIX}/lib/libgflags.so                              # [linux]
     - test -f ${PREFIX}/lib/libgflags_nothreads.so                    # [linux]
+    - test -f ${PREFIX}/lib/libgflags.so.2                            # [linux]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.so.2                  # [linux]
     - test -f ${PREFIX}/lib/libgflags.a                               # [not win]
     - test -f ${PREFIX}/lib/libgflags_nothreads.a                     # [not win]
     - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1          # [win]
