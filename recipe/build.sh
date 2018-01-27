@@ -2,6 +2,10 @@
 
 mkdir build_release
 cd build_release
+
+export CXXFLAGS="-fPIC ${CXXFLAGS}"
+export CFLAGS="-fPIC ${CFLAGS}"
+
 cmake ..  \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DINSTALL_HEADERS=on \
