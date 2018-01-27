@@ -9,8 +9,6 @@ source:
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
   sha1: b1c82261c8b9c87fb2fb5de6bdf70121ad1cca58
 
-  patches:
-    - windows_cmake_install_bindir.patch       # [win]
 
 build:
   number: 0
