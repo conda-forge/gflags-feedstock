@@ -1,4 +1,4 @@
-{% set version = "2.2.0" %}
+{% set version = "2.2.1" %}
 
 package:
   name: gflags
@@ -7,13 +7,11 @@ package:
 source:
   fn: gflags-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
-  sha1: bf07a7926cb2ce4dd4048bdc081f9e00e91cefd6
+  sha1: b1c82261c8b9c87fb2fb5de6bdf70121ad1cca58
 
-  patches:
-    - windows_cmake_install_bindir.patch       # [win]
 
 build:
-  number: 1
+  number: 0
   # py36 since it uses vc14 like py35
   skip: true  # [win and py36]
   features:
@@ -55,3 +53,4 @@ extra:
   recipe-maintainers:
     - jakirkham
     - wesm
+    - xhochy
