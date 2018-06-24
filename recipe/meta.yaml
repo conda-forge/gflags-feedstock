@@ -13,23 +13,19 @@ source:
 build:
   number: 0
   # py36 since it uses vc14 like py35
-  skip: true  # [win and py36]
-  features:
-    - vc9   # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py35]
 
 
 requirements:
   build:
-    - toolchain
     - cmake
-    - python  # [win]
-    - msinttypes  # [win and py<35]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - msinttypes  # [win and vc<14]
 
 test:
   requires:
-    - python 2.7.*  # [win and py27]
+    - python 2.7.*  # [win and vc<14]
     - python 3.4.*  # [win and py34]
     - python 3.5.*  # [win and py35]
   commands:
