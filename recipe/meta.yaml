@@ -12,8 +12,6 @@ source:
 
 build:
   number: 0
-  # py36 since it uses vc14 like py35
-
 
 requirements:
   build:
@@ -24,10 +22,6 @@ requirements:
     - msinttypes  # [win and vc<14]
 
 test:
-  requires:
-    - python 2.7.*  # [win and vc<14]
-    - python 3.4.*  # [win and py34]
-    - python 3.5.*  # [win and py35]
   commands:
     - test -f ${PREFIX}/lib/libgflags.dylib                           # [osx]
     - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]
