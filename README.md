@@ -3,7 +3,7 @@ About gflags
 
 Home: https://github.com/gflags/gflags
 
-Package license: BSD 3-Clause
+Package license: BSD-3-Clause
 
 Feedstock license: BSD 3-Clause
 
