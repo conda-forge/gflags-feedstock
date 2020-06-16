@@ -11,7 +11,7 @@ source:
 
 
 build:
-  number: 1002
+  number: 1003
   run_exports:
     - {{ pin_subpackage('gflags', max_pin='x.x') }}
 
@@ -38,7 +38,7 @@ test:
 
 about:
   home: https://github.com/gflags/gflags
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: COPYING.txt
   summary: A C++ library that implements commandline flags processing.
 
