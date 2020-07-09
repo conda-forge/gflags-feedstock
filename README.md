@@ -5,7 +5,7 @@ Home: https://github.com/gflags/gflags
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A C++ library that implements commandline flags processing.
 
