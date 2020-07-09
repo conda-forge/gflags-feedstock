@@ -8,10 +8,10 @@ export CFLAGS="-fPIC ${CFLAGS}"
 
 cmake ..  \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
-    -DINSTALL_HEADERS=on \
-    -DBUILD_SHARED_LIBS=on \
-    -DBUILD_STATIC_LIBS=on \
-    -DBUILD_TESTING=on
+    -DINSTALL_HEADERS=ON \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_STATIC_LIBS=OFF \
+    -DBUILD_TESTING=ON
 make
 ctest
 make install
