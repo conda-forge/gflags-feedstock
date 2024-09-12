@@ -8,10 +8,11 @@ source:
   fn: gflags-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
   sha1: 4d42470afb7236fb0cf90f8bbb0cec588073c17c
-
+  patches:
+    - patches/0001-cmake-config-namespace.patch
 
 build:
-  number: 1004
+  number: 1005
   run_exports:
     - {{ pin_subpackage('gflags', max_pin='x.x') }}
 
