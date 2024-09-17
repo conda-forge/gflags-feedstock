@@ -1,0 +1,28 @@
+From 0b7f8db2c6b1b0b2451da0923a9ab09cc610e8d1 Mon Sep 17 00:00:00 2001
+From: Mizux <corentinl@google.com>
+Date: Sun, 29 Sep 2019 16:31:36 +0200
+Subject: [PATCH 1/1] Fix check of targets in package config when
+ GFLAGS_USE_TARGET_NAMESPACE
+
+---
+ cmake/config.cmake.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/config.cmake.in b/cmake/config.cmake.in
+index e7f50d0..2fe7844 100644
+--- a/cmake/config.cmake.in
++++ b/cmake/config.cmake.in
+@@ -36,8 +36,8 @@ set (@PACKAGE_PREFIX@_INCLUDE_DIR "${_INSTALL_PREFIX}/@INCLUDE_INSTALL_DIR@")
+ 
+ if (@PACKAGE_NAME@_FIND_COMPONENTS)
+   foreach (@PACKAGE_NAME@_FIND_COMPONENT IN LISTS @PACKAGE_NAME@_FIND_COMPONENTS)
+-    if (@PACKAGE_NAME@_FIND_REQUIRED_${@PACKAGE_NAME@_FIND_COMPONENT} AND NOT TARGET @PACKAGE_NAME@_${@PACKAGE_NAME@_FIND_COMPONENT})
+-      message (FATAL_ERROR "Package @PACKAGE_NAME@ was installed without required component ${@PACKAGE_NAME@_FIND_COMPONENT}!")
++    if (@PACKAGE_NAME@_FIND_REQUIRED_${@PACKAGE_NAME@_FIND_COMPONENT} AND NOT TARGET ${@PACKAGE_PREFIX@_TARGET_PREFIX}@PACKAGE_NAME@_${@PACKAGE_NAME@_FIND_COMPONENT})
++      message (FATAL_ERROR "Package @PACKAGE_NAME@ was installed without required component ${@PACKAGE_PREFIX@_TARGET_PREFIX}${@PACKAGE_NAME@_FIND_COMPONENT}!")
+     endif ()
+   endforeach ()
+   list (GET @PACKAGE_NAME@_FIND_COMPONENTS 0 @PACKAGE_NAME@_FIND_COMPONENT)
+-- 
+2.46.1
+

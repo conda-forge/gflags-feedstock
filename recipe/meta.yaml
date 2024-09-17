@@ -8,10 +8,12 @@ source:
   fn: gflags-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
   sha1: 4d42470afb7236fb0cf90f8bbb0cec588073c17c
-
+  patches:
+    - patches/0001-Fix-check-of-targets-in-package-config-when-GFLAGS_U.patch
+    - patches/0002-Add-missing-to-cmake-file.patch
 
 build:
-  number: 1004
+  number: 1005
   run_exports:
     - {{ pin_subpackage('gflags', max_pin='x.x') }}
 
@@ -19,6 +21,7 @@ requirements:
   build:
     - cmake
     - make
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
 
