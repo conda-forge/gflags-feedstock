@@ -1,0 +1,25 @@
+From 00fcadd9b89b19c974098f8ad52716234f1cbb27 Mon Sep 17 00:00:00 2001
+From: Phil Christensen <philc@microsoft.com>
+Date: Fri, 30 Nov 2018 15:48:42 -0800
+Subject: [PATCH 1/1] Add missing @ to cmake file
+
+---
+ cmake/config.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/config.cmake.in b/cmake/config.cmake.in
+index a512c2a..e7f50d0 100644
+--- a/cmake/config.cmake.in
++++ b/cmake/config.cmake.in
+@@ -78,7 +78,7 @@ if (NOT DEFINED @PACKAGE_PREFIX@_NOTHREADS)
+     else ()
+       set (@PACKAGE_PREFIX@_NOTHREADS FALSE)
+     endif ()
+-  elseif (TARGET ${@PACKAGE_PREFIX@_TARGET_PREFIX}PACKAGE_NAME@_static OR TARGET ${@PACKAGE_PREFIX@_TARGET_PREFIX}@PACKAGE_NAME@_shared)
++  elseif (TARGET ${@PACKAGE_PREFIX@_TARGET_PREFIX}@PACKAGE_NAME@_static OR TARGET ${@PACKAGE_PREFIX@_TARGET_PREFIX}@PACKAGE_NAME@_shared)
+     set (@PACKAGE_PREFIX@_NOTHREADS FALSE)
+   else ()
+     set (@PACKAGE_PREFIX@_NOTHREADS TRUE)
+-- 
+2.46.1
+
