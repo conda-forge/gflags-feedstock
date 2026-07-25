@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "2.3.0"
+  version: "2.3.1"
 
 package:
   name: gflags
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/gflags/gflags/archive/v${{ version }}.tar.gz
-  sha256: f619a51371f41c0ad6837b2a98af9d4643b3371015d873887f7e8d3237320b2f
+  sha256: 1b5e0648d7b94021895086e65479b4eaca7935eecfffd7dd9512eb576181c53d
 
 build:
   number: 0
@@ -27,15 +27,15 @@ requirements:
 tests:
   - script:
       - if: osx
-        then: test -f ${PREFIX}/lib/libgflags.dylib
-      - if: osx
-        then: test -f ${PREFIX}/lib/libgflags_nothreads.dylib
+        then:
+          - test -f ${PREFIX}/lib/libgflags.dylib
+          - test -f ${PREFIX}/lib/libgflags_nothreads.dylib
       - if: linux
-        then: test -f ${PREFIX}/lib/libgflags.so
-      - if: linux
-        then: test -f ${PREFIX}/lib/libgflags_nothreads.so
+        then:
+          - test -f ${PREFIX}/lib/libgflags.so
+          - test -f ${PREFIX}/lib/libgflags_nothreads.so
       - if: unix
-        then: 
+        then:
           - test ! -f ${PREFIX}/lib/libgflags.a
           - test ! -f ${PREFIX}/lib/libgflags_nothreads.a
         else:
