@@ -1,7 +1,9 @@
 set CMAKE_CONFIG=Release
 
 mkdir build_%CMAKE_CONFIG%
+if errorlevel 1 exit /b 1
 pushd build_%CMAKE_CONFIG%
+if errorlevel 1 exit /b 1
 
 cmake -G "NMake Makefiles" ^
       -DCMAKE_BUILD_TYPE:STRING=%CMAKE_CONFIG% ^
@@ -12,7 +14,9 @@ cmake -G "NMake Makefiles" ^
       -DGFLAGS_REGISTER_INSTALL_PREFIX:BOOL=OFF ^
       -DBUILD_gflags_nothreads_LIB:BOOL=OFF ^
       "%SRC_DIR%"
+if errorlevel 1 exit /b 1
 
 cmake --build . --target install --config %CMAKE_CONFIG%
+if errorlevel 1 exit /b 1
 
 popd
